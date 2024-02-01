@@ -1,0 +1,163 @@
+// Mongo db query operators
+
+//and.js
+use sample_airbnb
+db.listingsAndReviews.find({ // Initiates a query on the 'listingsAndReviews' collection in the database.
+  amenities: { $all: ["Wifi", "TV"] } Uses the '$all' operator to specify that the 'amenities' array must contain all the elements listed here.
+});
+
+//andoror.js
+db.listingsAndReviews.find({
+    "$and": [
+      // Start of the first "$and" condition
+      {
+        "$or": [
+          // Start of the first "$or" condition within the "$and"
+          { "bedrooms": 2 },  // Check if "bedrooms" is equal to 2
+          { "beds": 2 }       // Check if "beds" is equal to 2
+        ]  // End of the first "$or" condition within the "$and"
+      }, // End of the first "$and" condition
+  
+      // Start of the second "$and" condition
+      {
+        "$or": [
+          // Start of the second "$or" condition within the "$and"
+          { "accommodates": 5 },       // Check if "accommodates" is equal to 5
+          { "minimum_nights": "15" }   // Check if "minimum_nights" is equal to "15"
+        ]  // End of the second "$or" condition within the "$and"
+      }  // End of the second "$and" condition
+    ]  // End of the "$and" condition
+  })
+
+  //greatthan.js
+  db.listingsAndReviews.find({
+    "bedrooms": { "$gte": 2 }// This is the condition you're specifying. $gte stands for "greater than or equal to
+  }
+  )
+
+  //greateThanEqualTo.js
+db.listingsAndReviews.find({ {
+    "price": { "$gte": 100.00 }
+  }
+  }
+)
+
+//insertMany.js
+db.grades.insertMany([
+    {
+      student_id: 546789,
+      products: [
+        {
+          type: "quiz",
+          score: 50,
+        },
+        {
+          type: "homework",
+          score: 70,
+        },
+        {
+          type: "quiz",
+          score: 66,
+        },
+        {
+          type: "exam",
+          score: 70,
+        },
+      ],
+      class_id: 551,
+    },
+    {
+      student_id: 777777,
+      products: [
+        {
+          type: "exam",
+          score: 83,
+        },
+        {
+          type: "quiz",
+          score: 59,
+        },
+        {
+          type: "quiz",
+          score: 72,
+        },
+        {
+          type: "quiz",
+          score: 67,
+        },
+      ],
+      class_id: 550,
+    },
+    {
+      student_id: 223344,
+      products: [
+        {
+          type: "exam",
+          score: 45,
+        },
+        {
+          type: "homework",
+          score: 39,
+        },
+        {
+          type: "quiz",
+          score: 40,
+        },
+        {
+          type: "homework",
+          score: 88,
+        },
+      ],
+      class_id: 551,
+    },
+  ])
+
+  //insertOne.js
+  db.grades.insertOne({
+    student_id: 654321,
+    products: [
+      {
+        type: "exam",
+        score: 90,
+      },
+      {
+        type: "homework",
+        score: 59,
+      },
+      {
+        type: "quiz",
+        score: 75,
+      },
+      {
+        type: "homework",
+        score: 88,
+      },
+    ],
+    class_id: 550,
+  })
+
+  //lesserThan.js
+  db.grades.find({ "products.score": { $lt: 59  } })
+
+  //lesserThanEqualto.js
+  db.grades.find({ "products.score": { $lte: 59  } })
+
+
+// MongoDB Python Connection Code
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+
+uri = "mongodb+srv://abhilashgoudab:mongodb1234@cluster0.vod4mfv.mongodb.net/"
+
+// Create a new client and connect to the server
+client = MongoClient(uri, server_api=ServerApi('1'))
+
+// Send a ping to confirm a successful connection
+try {
+  client.admin.command('ping');
+  print("Pinged your deployment. You successfully connected to MongoDB!");
+} catch (Exception as e) {
+  print(e);
+}
+
+
