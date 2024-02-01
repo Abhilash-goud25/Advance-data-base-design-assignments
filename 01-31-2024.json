@@ -9,7 +9,7 @@ db.listingsAndReviews.find({ // Initiates a query on the 'listingsAndReviews' co
 //andoror.js
 db.listingsAndReviews.find({
     "$and": [
-      // Start of the first "$and" condition
+      // Start of the first "$and" condition.
       {
         "$or": [
           // Start of the first "$or" condition within the "$and"
