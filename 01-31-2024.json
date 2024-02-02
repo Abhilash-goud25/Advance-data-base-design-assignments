@@ -31,7 +31,7 @@ db.listingsAndReviews.find({
 
   //greatthan.js
   db.listingsAndReviews.find({
-    "bedrooms": { "$gte": 2 }// This is the condition you're specifying. $gte stands for "greater than or equal to
+    "bedrooms": { "$gt": 2 }// This is the condition you're specifying. $gte stands for "greater than or equal to
   }
   )
 
