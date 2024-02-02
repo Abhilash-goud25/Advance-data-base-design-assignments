@@ -3,7 +3,7 @@
 //and.js
 use sample_airbnb
 db.listingsAndReviews.find({ // Initiates a query on the 'listingsAndReviews' collection in the database.
-  amenities: { $all: ["Wifi", "TV"] } Uses the '$all' operator to specify that the 'amenities' array must contain all the elements listed here.
+  amenities: { $all: ["Wifi", "TV"] } //Uses the '$all' operator to specify that the 'amenities' array must contain all the elements listed here.
 });
 
 //andoror.js
@@ -31,13 +31,13 @@ db.listingsAndReviews.find({
 
   //greatthan.js
   db.listingsAndReviews.find({
-    "bedrooms": { "$gt": 2 }// This is the condition you're specifying. $gte stands for "greater than or equal to
+    "bedrooms": { "$gt": 2 }// This is the condition you're specifying. $gt stands for "greater than 
   }
   )
 
   //greateThanEqualTo.js
 db.listingsAndReviews.find({ {
-    "price": { "$gte": 100.00 }
+    "price": { "$gte": 100.00 } //This is the condition you're specifying. $gt stands for "greater than equal to 
   }
   }
 )
